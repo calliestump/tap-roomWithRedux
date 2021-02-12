@@ -2,7 +2,7 @@
 
 #### **02/12/21**
 
-## By Callie Stump_
+## By Callie Stump
 <hr>
 
 ## **Description**
