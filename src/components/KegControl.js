@@ -38,6 +38,18 @@ class KegControl extends React.Component {
     }
   }
 
+  handleBuyingKeg = () => {
+    const selectedKeg = this.state.selectedKeg; //selects keg that is currently selected and viewed in details page
+    const newKegPintQuantity = Object.assign({}, selectedKeg, {kegPintQuantity: selectedKeg.kegPintQuantity - 1}); //this targets the selectedKeg and it's kegPintQuantity, and assigns it the new kegPintQuantity
+    const newKegList = this.state.masterKegList
+      .filter(keg => keg.id !== this.state.selectedKeg.id)
+      .concat(newKegPintQuantity); //updates the keg list
+    this.setState({
+      masterKegList: newKegList,
+      selectedKeg: newKegPintQuantity
+    });
+  } 
+
 
   render(){
     let currentlyVisibleState = null;
@@ -47,6 +59,7 @@ class KegControl extends React.Component {
       currentlyVisibleState = 
       <KegDetail 
       keg = {this.state.selectedKeg} 
+      onClickingBuy = {this.handleBuyingKeg}
       />
       buttonText = "Return to Keg List";
     } 

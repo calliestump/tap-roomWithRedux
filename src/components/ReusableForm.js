@@ -22,6 +22,11 @@ function ReusableForm(props) {
           placeholder="Quantity of Kegs" />
         <br /><br />
         <input
+          type='number'
+          name='kegPintQuantity'
+          placeholder="Amount of Pints in Keg" />
+        <br /><br />
+        <input
           type='text'
           name='kegAlcoholContent'
           placeholder="Alcohol Content" />
