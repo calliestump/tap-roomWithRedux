@@ -15,6 +15,7 @@ function KegDetail(props){
       {/* <input type="number" placeholder="Pints to restock" name="pintRestock" id= "pintRestock" /> */}
       {/* <button class="restock" onClick ={() => onPintRestock() }>Restock</button><br/><br/> */}
       <h1><span class="outOfPints">Oh no! Out of pints.</span></h1>
+      <h1 class="almostOut"><span>We're almost out - Better grab a drink!</span></h1><br />
       <button class="buy" onClick ={() => onClickingBuy() }>Sell Pint</button><br/><br/>
       <button class="edit" onClick = {props.onClickingEdit}>Edit Keg</button><br/><br/>
       <button class="delete" onClick ={() => onClickingDelete(keg.id)}>Delete Keg</button>

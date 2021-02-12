@@ -35,7 +35,7 @@ img {
   border-radius: 15px;
 }
 
-h1.title, span.afterHours, span.freeWifi, .outOfPints {
+h1.title, span.afterHours, span.freeWifi, .outOfPints, .almostOut {
   color:  rgb(116, 44, 44);
 }
 
@@ -44,6 +44,6 @@ button {
   color: rgb(116, 44, 44);
 }
 
-.outOfPints {
+.outOfPints, .almostOut {
   display: none;
 }

@@ -71,7 +71,12 @@ class KegControl extends React.Component {
     if (selectedKeg.kegPintQuantity <= 1) {
       ($("button.buy").hide());
       ($(".outOfPints").show());
-    } else if (selectedKeg.kegPintQuantity <= 10) {
+    } 
+    if (selectedKeg.kegPintQuantity <= 11) {
+      ($(".almostOut").show());
+    }
+    if (selectedKeg.kegPintQuantity <= 1) {
+      ($(".almostOut").hide()); // Unsure why it wouldn't work under line 73.
     }
     const newKegPintQuantity = Object.assign({}, selectedKeg, {kegPintQuantity: selectedKeg.kegPintQuantity - 1}); //this targets the selectedKeg and it's kegPintQuantity, and assigns it the new kegPintQuantity
     const newKegList = this.state.masterKegList
