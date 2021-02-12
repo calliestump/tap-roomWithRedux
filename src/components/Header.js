@@ -8,6 +8,7 @@ function Header(){
       <br /><br />
       <h1 class="title"><i><strong>Epicodus Tap Room</strong></i></h1>
       <h4>take a second to relax while you code <strong><span class="afterHours">after hours</span></strong>.</h4>
+      <p><span class="freeWifi">- free WiFi -</span></p>
       <hr />
     </React.Fragment>
   )
