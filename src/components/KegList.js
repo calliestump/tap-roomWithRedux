@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 function KegList(props) {
   return (
     <React.Fragment>
-      <hr />
+      <h3><u>Menu</u></h3>
       {props.kegList.map((keg) =>
         <Keg 
-          kegName={keg.kegName}
+          kegName={keg.kegName} 
           kegBrand={keg.kegBrand}
           kegPintQuantity={keg.kegPintQuantity}
           kegAlcoholContent={keg.kegAlcoholContent}
