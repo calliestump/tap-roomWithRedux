@@ -5,7 +5,7 @@ import ReusableForm from './ReusableForm';
 
 function NewKegForm(props) {
   
-  function handNewKegFormSubmission(event) {
+  function handleNewKegFormSubmission(event) {
     event.preventDefault()
     props.onNewKegCreation({
       kegName: event.target.kegName.value,
@@ -19,13 +19,13 @@ function NewKegForm(props) {
   return (
     <React.Fragment>
       <ReusableForm
-      formSubmissionHandler={handleNewFormSubmission}
+      formSubmissionHandler={handleNewKegFormSubmission}
       buttonText="Add Keg" />
     </React.Fragment>
   );
 }
 
-NewKegForm.PropTypes = {
+NewKegForm.propTypes = {
   onNewKegCreation: PropTypes.func
 };
 
