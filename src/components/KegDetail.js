@@ -5,7 +5,7 @@ function KegDetail(props){
   const { keg, onClickingBuy, onClickingDelete} = props;
   return (
     <React.Fragment>
-      <h1><u>Keg Detail</u></h1><br />
+      <h1><u>Keg Details</u></h1><br />
       <h2>{keg.kegName} - {keg.kegBrand}</h2>
       <h4><strong>Amount of Pints:</strong> {keg.kegPintQuantity}</h4>
       <h4><strong>Alcohol Content:</strong> {keg.kegAlcoholContent}</h4>
