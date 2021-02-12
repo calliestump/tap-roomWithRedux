@@ -18,13 +18,8 @@ function ReusableForm(props) {
         <br /><br />
         <input
           type='number'
-          name='kegQuantity'
-          placeholder="Quantity of Kegs" />
-        <br /><br />
-        <input
-          type='number'
           name='kegPintQuantity'
-          placeholder="Amount of Pints in Keg" />
+          placeholder="Amount of Pints" />
         <br /><br />
         <input
           type='text'
