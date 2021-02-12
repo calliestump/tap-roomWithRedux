@@ -17,7 +17,8 @@ Keg.propTypes = {
   kegBrand: PropTypes.string.isRequired,
   kegPintQuantity: PropTypes.number.isRequired,
   kegAlcoholContent: PropTypes.string.isRequired,
-  kegPrice: PropTypes.string.isRequired // If next week requires reciept then change prop type to int
+  kegPrice: PropTypes.string.isRequired, // If next week requires reciept then change prop type to int
+  // id: PropTypes.string
 }
 
 export default Keg;
