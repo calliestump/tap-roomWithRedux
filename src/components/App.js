@@ -8,6 +8,8 @@ function App(){
     <React.Fragment>
       <div class="header">
         <Header />
+      </div>
+      <div class="kegControl">
         <KegControl />
       </div>
     </React.Fragment>

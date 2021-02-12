@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 function ReusableForm(props) {
   return (
     <React.Fragment>
-      <h3><u>Keg Form</u></h3>
+      <h1><u>Keg Form</u></h1><br />
       <form onSubmit={props.formSubmissionHandler}>
         <input
           type='text'
           name='kegName'
-          placeholder="Keg Name" />
+          placeholder="Keg Type" />
         <br /><br />
         <input
           type='text'
@@ -18,8 +18,8 @@ function ReusableForm(props) {
         <br /><br />
         <input
           type='number'
-          name='kegPintQuantity'
-          placeholder="Pints Purchased" />
+          name='kegQuantity'
+          placeholder="Quantity of Kegs" />
         <br /><br />
         <input
           type='text'
@@ -33,6 +33,7 @@ function ReusableForm(props) {
         <br /><br />
         <button type='submit'>{props.buttonText}</button>
       </form>
+      <hr />
     </React.Fragment>
   );
 }

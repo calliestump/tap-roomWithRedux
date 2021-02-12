@@ -10,7 +10,7 @@ function NewKegForm(props) {
     props.onNewKegCreation({
       kegName: event.target.kegName.value,
       kegBrand: event.target.kegBrand.value,
-      kegPintQuantity: event.target.kegPintQuantity.value,
+      kegQuantity: event.target.kegQuantity.value,
       kegAlcoholContent: event.target.kegAlcoholContent.value,
       kegPrice: event.target.kegPrice.value,
       id: v4()});

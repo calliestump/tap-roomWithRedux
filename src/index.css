@@ -16,3 +16,11 @@ code {
   padding: 1%;
   text-align: center;
 }
+
+.kegControl {
+  text-align: center;
+}
+
+::placeholder {
+  text-align: center;
+}
