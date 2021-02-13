@@ -94,9 +94,10 @@ class KegControl extends React.Component {
 
   handleRestock = () => {
     const amountToRestock = ($(".pintRestockNum").val());
-    console.log(amountToRestock); //Returns string
+    console.log(amountToRestock); //Returns string ?
     const selectedKeg = this.state.selectedKeg; //selects keg that is currently selected and viewed in details page
-    const newKegPintQuantity = Object.assign({}, selectedKeg, {kegPintQuantity: selectedKeg.kegPintQuantity += amountToRestock}); //this targets the selectedKeg and it's kegPintQuantity, and assigns it the new kegPintQuantity
+    const newKegPintQuantity = Object.assign({}, selectedKeg, {kegPintQuantity: selectedKeg.kegPintQuantity += amountToRestock}); //this targets the selectedKeg and it's kegPintQuantity, and assigns it the new kegPintQuantity. 
+    // Ex.) If pints equals 0 and I want to restock 20, the new ouput is "020"
     const newKegList = this.state.masterKegList
     .filter(keg => keg.id !== this.state.selectedKeg.id)
     .concat(newKegPintQuantity); //updates the keg list
@@ -104,7 +105,7 @@ class KegControl extends React.Component {
       masterKegList: newKegList,
       selectedKeg: newKegPintQuantity
     });
-    console.log(selectedKeg.kegPintQuantity); // returns string
+    console.log(selectedKeg.kegPintQuantity); // returns string ?
   } 
 
   render(){
