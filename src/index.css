@@ -44,6 +44,6 @@ button {
   color: rgb(116, 44, 44);
 }
 
-.outOfPints, .almostOut {
+.outOfPints, .almostOut, .pintRestockNum, .pintRestockBtn {
   display: none;
 }

@@ -12,8 +12,8 @@ function KegDetail(props){
       <h4><strong>Amount of Pints:</strong> {keg.kegPintQuantity}</h4>
       <h4><strong>Alcohol Content:</strong> {keg.kegAlcoholContent}</h4>
       <h4><strong>Keg Price:</strong> {keg.kegPrice}</h4><br />
-      {/* <input type="number" placeholder="Pints to restock" name="pintRestock" id= "pintRestock" /> */}
-      {/* <button class="restock" onClick ={() => onPintRestock() }>Restock</button><br/><br/> */}
+      <input type="number" placeholder="Pints to restock" class="pintRestockNum" id= "pintRestockNum" />
+      <button class="pintRestockBtn" onClick ={() => onPintRestock() }>Restock</button><br/><br/>
       <h1><span class="outOfPints">Oh no! Out of pints.</span></h1>
       <h1 class="almostOut"><span>We're almost out - Better grab a drink!</span></h1><br />
       <button class="buy" onClick ={() => onClickingBuy() }>Sell Pint</button><br/><br/>
