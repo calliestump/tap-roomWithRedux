@@ -25,6 +25,7 @@ code {
 
 ::placeholder {
   text-align: center;
+  color:rgb(116, 44, 44);
 }
 
 img {
@@ -48,7 +49,3 @@ button {
 input {
   padding: 1%;
 }
-
-/* .outOfPints, .almostOut, .pintRestockNum, .pintRestockBtn {
-  display: none;
-} */
