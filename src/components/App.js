@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App(){
   return(
     <React.Fragment>
-      <div class="container">
+      <div className="container">
           <Header />
           <KegControl />
 

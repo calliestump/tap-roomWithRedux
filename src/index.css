@@ -42,8 +42,13 @@ h1.title, span.afterHours, span.freeWifi, .outOfPints, .almostOut {
 button {
   background-color: rgb(243, 205, 202);
   color: rgb(116, 44, 44);
+  padding: 1%
 }
 
-.outOfPints, .almostOut, .pintRestockNum, .pintRestockBtn {
-  display: none;
+input {
+  padding: 1%;
 }
+
+/* .outOfPints, .almostOut, .pintRestockNum, .pintRestockBtn {
+  display: none;
+} */

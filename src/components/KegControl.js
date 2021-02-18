@@ -38,7 +38,6 @@ class KegControl extends React.Component {
   }
 
   handleEditClick = () => {
-    console.log("handEditClick reached");
     this.setState({editing: true});
   }
 
@@ -68,20 +67,6 @@ class KegControl extends React.Component {
   
   handleBuyingKeg = () => {
     const selectedKeg = this.state.selectedKeg; //selects keg that is currently selected and viewed in details page
-    if (selectedKeg.kegPintQuantity <= 1) {
-      ($("button.buy").hide());
-      ($(".outOfPints").show());
-      ($(".pintRestockNum").show());
-      ($(".pintRestockBtn").show());
-      
-    } 
-    if (selectedKeg.kegPintQuantity <= 11) {
-      ($(".almostOut").show());
-    }
-    if (selectedKeg.kegPintQuantity <= 1) {
-      ($(".almostOut").hide()); // Unsure why it wouldn't work under line 73.
-    }
-
     const newKegPintQuantity = Object.assign({}, selectedKeg, {kegPintQuantity: selectedKeg.kegPintQuantity - 1}); //this targets the selectedKeg and it's kegPintQuantity, and assigns it the new kegPintQuantity
     const newKegList = this.state.masterKegList
     .filter(keg => keg.id !== this.state.selectedKeg.id)
@@ -93,8 +78,7 @@ class KegControl extends React.Component {
   } 
 
   handleRestock = () => {
-    const amountToRestock = ($(".pintRestockNum").val());
-    console.log(amountToRestock); //Returns string ?
+    const amountToRestock = parseInt($(".pintRestockNum").val());
     const selectedKeg = this.state.selectedKeg; //selects keg that is currently selected and viewed in details page
     const newKegPintQuantity = Object.assign({}, selectedKeg, {kegPintQuantity: selectedKeg.kegPintQuantity += amountToRestock}); //this targets the selectedKeg and it's kegPintQuantity, and assigns it the new kegPintQuantity. 
     // Ex.) If pints equals 0 and I want to restock 20, the new ouput is "020"
@@ -105,7 +89,6 @@ class KegControl extends React.Component {
       masterKegList: newKegList,
       selectedKeg: newKegPintQuantity
     });
-    console.log(selectedKeg.kegPintQuantity); // returns string ?
   } 
 
   render(){

@@ -3,9 +3,6 @@ import Keg from "./Keg";
 import PropTypes from 'prop-types';
 
 function KegList(props) {
-  // if (kegList == []) {
-  //   <h1>No Kegs</h1>
-  // }
   return (
     <React.Fragment>
       <h1><u>Our Menu</u></h1><br />

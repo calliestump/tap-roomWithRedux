@@ -1,27 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import Keg from './Keg';
-import $ from 'jquery';
 
 function KegDetail(props){
   const { keg, onClickingBuy, onPintRestock, onClickingDelete} = props;
-  return (
-    <React.Fragment>
-      <h1><u>Keg Details</u></h1><br />
-      <h2>{keg.kegName} - {keg.kegBrand}</h2>
-      <h4><strong>Amount of Pints:</strong> {keg.kegPintQuantity}</h4>
-      <h4><strong>Alcohol Content:</strong> {keg.kegAlcoholContent}</h4>
-      <h4><strong>Keg Price:</strong> {keg.kegPrice}</h4><br />
-      <input type="number" placeholder="Pints to restock" class="pintRestockNum" id= "pintRestockNum" />
-      <button class="pintRestockBtn" onClick ={() => onPintRestock() }>Restock</button><br/><br/>
-      <h1><span class="outOfPints">Oh no! Out of pints.</span></h1>
-      <h1 class="almostOut"><span>We're almost out - Better grab a drink!</span></h1><br />
-      <button class="buy" onClick ={() => onClickingBuy() }>Sell Pint</button><br/><br/>
-      <button class="edit" onClick = {props.onClickingEdit}>Edit Keg</button><br/><br/>
-      <button class="delete" onClick ={() => onClickingDelete(keg.id)}>Delete Keg</button>
-      <hr />
-    </React.Fragment>
-  );
+  let {alert} = props;
+  if (keg.kegPintQuantity === 10) {
+   alert = <span className="almostOut">We're at {keg.kegPintQuantity} pints - Better grab a drink!</span>
+  } else {
+    alert = keg.kegPintQuantity
+  }
+  if(keg.kegPintQuantity > 0) {
+    return (
+      <React.Fragment>
+        <h1><u>Keg Details</u></h1><br />
+        <h2>{keg.kegName} - {keg.kegBrand}</h2>
+        <h4><strong>Amount of Pints:</strong> {alert}</h4>
+        <h4><strong>Alcohol Content:</strong> {keg.kegAlcoholContent}</h4>
+        <h4><strong>Keg Price:</strong> {keg.kegPrice}</h4><br />
+        <button className="buy" onClick ={() => onClickingBuy() }>Sell Pint</button><br/><br/>
+        <button className="edit" onClick = {props.onClickingEdit}>Edit Keg</button><br/><br/>
+        <button className="delete" onClick ={() => onClickingDelete(keg.id)}>Delete Keg</button>
+        <hr />
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <h1>Oh no! <span className="outOfPints">{keg.kegName} - {keg.kegBrand}</span> is out of pints.</h1><br/>
+        <input type="number" placeholder="Pints to restock" className="pintRestockNum" id= "pintRestockNum" />
+        <button className="pintRestockBtn" onClick ={() => onPintRestock() }>Restock</button><br/><br/><br/>
+        <button className="delete" onClick ={() => onClickingDelete(keg.id)}>Delete Keg</button><br/>
+      </React.Fragment>
+    )
+  }
 }
 
 KegDetail.propTypes = {
@@ -29,7 +40,6 @@ KegDetail.propTypes = {
   onClickingBuy: PropTypes.func,
   onClickingDelete: PropTypes.func,
   onClickingEdit: PropTypes.func,
-  // onPintRestock: PropTypes.func
 }; 
 
 export default KegDetail;
