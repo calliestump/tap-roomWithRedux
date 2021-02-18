@@ -8,7 +8,6 @@
 ## **Description**
 This is a website to track Kegs for 'Epicodus Tap Room'. It includes full CRUD functionality. User stories are listed below.
 
-## User Stories
 ### **📖 User Stories**
 <details>
 <summary>Expand</summary>
