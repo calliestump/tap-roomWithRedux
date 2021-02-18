@@ -8,10 +8,6 @@
 ## **Description**
 This is a website to track Kegs for 'Epicodus Tap Room'. It includes full CRUD functionality. User stories are listed below.
 
-
-## Known Bug
-If user reaches 0 pints and enters their restock value it doesn't calculate.
-<strong>Ex.) restock input: 20 | restock output: 020</strong>
 ## User Stories
 ### **📖 User Stories**
 <details>
