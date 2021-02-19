@@ -1,12 +1,13 @@
-# Epicodus Tap Room
+# Epicodus Tap Room with Redux
 
-#### **02/12/21**
+#### **02/19/21**
 
 ## By Callie Stump
 <hr>
 
 ## **Description**
-This is a website to track Kegs for 'Epicodus Tap Room'. It includes full CRUD functionality. User stories are listed below.
+This is a website to track Kegs for 'Epicodus Tap Room'. It includes full CRUD functionality. User stories are listed below. 
+<strong>Redux now implemented</strong>
 
 ### **📖 User Stories**
 <details>
