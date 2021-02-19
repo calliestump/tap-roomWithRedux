@@ -80,7 +80,7 @@ describe('kegListReducer', () => {
     });
   });
 
-  // Test for BUY_KEG action
+  // Test for BUY_PINT action
   test('Should successfully buy a pint', () => {
     const { kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice, id } = kegData;
     action = {
@@ -98,6 +98,30 @@ describe('kegListReducer', () => {
         kegName: 'Quarter-Barrel',
         kegBrand: 'Miller Lite',
         kegPintQuantity: 123,
+        kegAlcoholContent: "25.6%",
+        kegPrice: "12.99",
+        id: 1
+      }
+    });
+  });
+  // Test for RESTOCK_KEG action
+  test('Should restock a keg', () => {
+    const { kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice, id } = kegData;
+    action = {
+      type: 'RESTOCK_KEG',
+      kegName,
+      kegBrand,
+      kegPintQuantity: 0,
+      kegAlcoholContent,
+      kegPrice,
+      id
+    };
+    expect(kegListReducer(kegData, action)).toMatchObject({
+      1: 
+      {
+        kegName: 'Quarter-Barrel',
+        kegBrand: 'Miller Lite',
+        kegPintQuantity: 124,
         kegAlcoholContent: "25.6%",
         kegPrice: "12.99",
         id: 1

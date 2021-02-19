@@ -22,7 +22,18 @@ export default (state = {}, action) => {
         kegPrice,
         id
       }
-    })
+    });
+  case 'RESTOCK_KEG':
+    return Object.assign({}, state, {
+      [id]: {
+        kegName,
+        kegBrand,
+        kegPintQuantity: kegPintQuantity + 124,
+        kegAlcoholContent,
+        kegPrice,
+        id
+      }
+    });
   case 'DELETE_KEG':
     let newState = { ...state };
     delete newState[id];
