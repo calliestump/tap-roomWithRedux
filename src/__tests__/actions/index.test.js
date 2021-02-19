@@ -13,4 +13,17 @@ describe('tap room actions', () => {
       type: 'TOGGLE_FORM'
     });
   });
+
+  it('addKeg should create ADD_KEG action', () => {
+    expect(actions.addKeg({kegName: 'Quarter-Barrel', kegBrand: 'Miller Lite', kegPintQuantity: 124, kegAlcoholContent: "25.6%", kegPrice: "12.99", id: 1})).toEqual({
+      type: 'ADD_KEG',
+      kegName: 'Quarter-Barrel',
+      kegBrand: 'Miller Lite',
+      kegPintQuantity: 124,
+      kegAlcoholContent: "25.6%",
+      kegPrice: "12.99",
+      id: 1
+    });
+  });
+  
 });
