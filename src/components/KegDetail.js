@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function KegDetail(props){
-  const { keg, onClickingBuy, onPintRestock, onClickingDelete} = props;
+  const { keg, onClickingBuy, onPintRestock, onClickingDelete} = props; 
   let {alert} = props;
   if (keg.kegPintQuantity === 10) {
    alert = <span className="almostOut">We're at {keg.kegPintQuantity} pints - Better grab a drink!</span>
