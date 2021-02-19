@@ -97,7 +97,7 @@ describe('kegListReducer', () => {
       {
         kegName: 'Quarter-Barrel',
         kegBrand: 'Miller Lite',
-        kegPintQuantity: 124,
+        kegPintQuantity: 123,
         kegAlcoholContent: "25.6%",
         kegPrice: "12.99",
         id: 1
