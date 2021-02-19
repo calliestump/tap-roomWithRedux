@@ -2,10 +2,10 @@ import React from 'react';
 import KegList from './KegList';
 import NewKegForm from './NewKegForm';
 import KegDetail from './KegDetail';
-// import amountToRestock from './KegDetail';
 import EditKegForm from './EditKegForm';
 import $ from 'jquery';
-
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 
 class KegControl extends React.Component {
 
@@ -13,28 +13,46 @@ class KegControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      masterKegList:[],
+      // masterKegList:[],
       selectedKeg: null,
       editing: false
     };
   }
 
   handleAddingNewKegToList = (newKeg) => {
-    const newMasterKegList = this.state.masterKegList.concat(newKeg);
-    this.setState({masterKegList: newMasterKegList, formVisibleOnPage: false});
+    const { dispatch } = this.props;
+    const { id, kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice } = newKeg;
+    const action = {
+      type: 'ADD_KEG',
+      id: id,
+      kegName,
+      kegBrand,
+      kegPintQuantity,
+      kegAlcoholContent,
+      kegPrice
+    }
+    dispatch(action);
+    this.setState({formVisibleOnPage: false});
   }
 
   handleChangingSelectedKeg = (id) => {
-    const selectedKeg = this.state.masterKegList.filter(keg => keg.id === id)[0];
+    const selectedKeg = this.props.masterKegList[id];
     this.setState({selectedKeg: selectedKeg});
   }
 
   handleDeletingKeg = (id) => {
-    const newMasterKegList = this.state.masterKegList.filter(keg => keg.id !== id);
-    this.setState({
-      masterKegList: newMasterKegList,
-      selectedKeg: null
-    });
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_KEG',
+      id: id
+    }
+    dispatch(action);
+    this.setState({selectedKeg: null});
+    // const newMasterKegList = this.state.masterKegList.filter(keg => keg.id !== id);
+    // this.setState({
+    //   masterKegList: newMasterKegList,
+    //   selectedKeg: null
+    // });
   }
 
   handleEditClick = () => {
@@ -42,14 +60,30 @@ class KegControl extends React.Component {
   }
 
   handleEditingKegInList = (kegToEdit) => {
-    const editedMasterKegList = this.state.masterKegList
-      .filter(keg => keg.id !== this.state.selectedKeg.id)
-      .concat(kegToEdit);
+    const { dispatch } = this.props;
+    const { id, kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice } = kegToEdit;
+    const action = {
+      type: 'ADD_KEG',
+      id,
+      kegName,
+      kegBrand,
+      kegPintQuantity,
+      kegAlcoholContent,
+      kegPrice
+    }
+    dispatch(action);
     this.setState({
-      masterKegList: editedMasterKegList,
       editing: false,
       selectedKeg: null
     });
+    // const editedMasterKegList = this.state.masterKegList
+    //   .filter(keg => keg.id !== this.state.selectedKeg.id)
+    //   .concat(kegToEdit);
+    // this.setState({
+    //   masterKegList: editedMasterKegList,
+    //   editing: false,
+    //   selectedKeg: null
+    // });
   }
 
   handleClick = () => {
@@ -121,7 +155,7 @@ class KegControl extends React.Component {
     } else {
       currentlyVisibleState = 
       <KegList 
-      kegList={this.state.masterKegList}
+      kegList={this.props.masterKegList}
       onKegSelection={this.handleChangingSelectedKeg}
       />;
       buttonText = "Add Keg";
@@ -135,5 +169,17 @@ class KegControl extends React.Component {
     );
   }
 }
+
+KegControl.propTypes = {
+  masterKegList: PropTypes.object,
+  formVisibleOnPage: PropTypes.bool
+}
+const mapStateToProps = state => {
+  return {
+    masterKegList: state.masterKegList,
+    formVisibleOnPage: state.formVisibleOnPage
+  }
+}
+KegControl = connect(mapStateToProps)(KegControl);
 
 export default KegControl;
