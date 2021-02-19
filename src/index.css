@@ -29,7 +29,7 @@ code {
 }
 
 img {
-  width: stretch;
+  width: 50%;
   height: 500px;
   margin: 5px 5px 0 5px;
   border: #0f0f12 outset 2px;
