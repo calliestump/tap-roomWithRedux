@@ -7,6 +7,7 @@ import EditKegForm from './EditKegForm';
 import $ from 'jquery';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import * as a from './../actions';
 
 class KegControl extends React.Component {
 
@@ -27,10 +28,7 @@ class KegControl extends React.Component {
   
   handleDeletingKeg = (id) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_KEG',
-      id: id
-    }
+    const action = a.deleteKeg(id)
     dispatch(action);
     this.setState({selectedKeg: null});
     }
@@ -41,16 +39,7 @@ class KegControl extends React.Component {
 
   handleEditingKegInList = (kegToEdit) => {
     const { dispatch } = this.props;
-    const { id, kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice } = kegToEdit;
-    const action = {
-      type: 'ADD_KEG',
-      id: id,
-      kegName: kegName,
-      kegBrand: kegBrand,
-      kegPintQuantity: kegPintQuantity,
-      kegAlcoholContent: kegAlcoholContent,
-      kegPrice: kegPrice
-    }
+    const action = a.addKeg(kegToEdit);
     dispatch(action);
     this.setState({
       editing: false,
@@ -67,9 +56,7 @@ class KegControl extends React.Component {
       });
     } else {
       const { dispatch } = this.props;
-      const action = {
-        type: 'TOGGLE_FORM'
-      }
+      const action = a.toggleForm();
       dispatch(action);
       // this.setState(prevState => ({
       //   formVisibleOnPage: !prevState.formVisibleOnPage,
@@ -80,19 +67,9 @@ class KegControl extends React.Component {
   handleAddingNewKegToList = (newKeg) => {
     const { dispatch } = this.props;
     const { id, kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice} = newKeg;
-    const action = {
-      type: 'ADD_KEG',
-      id,
-      kegName,
-      kegBrand,
-      kegPintQuantity,
-      kegAlcoholContent,
-      kegPrice
-    }
+    const action = a.addKeg(newKeg);
     dispatch(action);
-    const action2 = {
-      type: 'TOGGLE_FORM'
-    }
+    const action2 = a.toggleForm()
     dispatch(action2);
     // this.setState({formVisibleOnPage: false});
   }
