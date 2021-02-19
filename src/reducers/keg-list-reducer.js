@@ -1,7 +1,7 @@
 export default (state = {}, action) => {
   const { kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice, id } = action;
   switch (action.type) {
-  case 'ADD_KEG':
+  case c.ADD_KEG:
     return Object.assign({}, state, {
       [id] : {
         kegName,
@@ -12,7 +12,7 @@ export default (state = {}, action) => {
         id
       }
     });
-  case 'BUY_PINT':
+  case c.BUY_PINT:
     return Object.assign({}, state, {
       [id]: {
         kegName,
@@ -23,7 +23,7 @@ export default (state = {}, action) => {
         id
       }
     });
-  case 'RESTOCK_KEG':
+  case c.RESTOCK_KEG:
     return Object.assign({}, state, {
       [id]: {
         kegName,
@@ -34,7 +34,7 @@ export default (state = {}, action) => {
         id
       }
     });
-  case 'DELETE_KEG':
+  case c.DELETE_KEG:
     const newState = { ...state };
     delete newState[id];
     return newState;

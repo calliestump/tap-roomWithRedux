@@ -19,3 +19,17 @@ export const addKeg = (keg) => {
     id
   }
 }
+
+export const buyKeg = (keg) => {
+  const {kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice, id} = keg;
+  return {
+    type: 'BUY_PINT',
+    kegName,
+    kegBrand,
+    kegPintQuantity,
+    kegAlcoholContent,
+    kegPrice,
+    id
+  }
+}
+

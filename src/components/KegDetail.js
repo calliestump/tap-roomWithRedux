@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function KegDetail(props){
-  const { keg, onClickingDelete} = props;  //onClickingBuy, onPintRestock,
+  const { keg, onClickingDelete, onClickingBuy} = props;  // onPintRestock,
   let {alert} = props;
   if (keg.kegPintQuantity === 10) {
    alert = <span className="almostOut">We're at {keg.kegPintQuantity} pints - Better grab a drink!</span>
@@ -17,7 +17,7 @@ function KegDetail(props){
         <h3><strong>Amount of Pints:</strong> {alert}</h3>
         <h3><strong>Alcohol Content:</strong> {keg.kegAlcoholContent}</h3>
         <h3><strong>Keg Price:</strong> {keg.kegPrice}</h3><br />
-        {/* <button className="buy" onClick ={() => onClickingBuy() }>Sell Pint</button><br/><br/> */}
+        <button className="buy" onClick ={() => onClickingBuy() }>Sell Pint</button><br/><br/>
         <button className="edit" onClick = {props.onClickingEdit}>Edit Keg</button><br/><br/>
         <button className="delete" onClick ={() => onClickingDelete(keg.id)}>Delete Keg</button>
         <hr />
@@ -37,7 +37,7 @@ function KegDetail(props){
 
 KegDetail.propTypes = {
   keg: PropTypes.object,
-  // onClickingBuy: PropTypes.func,
+  onClickingBuy: PropTypes.func,
   onClickingDelete: PropTypes.func,
   onClickingEdit: PropTypes.func,
 }; 
