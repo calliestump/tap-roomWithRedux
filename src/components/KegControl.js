@@ -14,7 +14,6 @@ class KegControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // formVisibleOnPage: false,
       selectedKeg: null,
       editing: false
     };
@@ -50,7 +49,6 @@ class KegControl extends React.Component {
   handleClick = () => {
     if (this.state.selectedKeg != null) {
       this.setState({
-        // formVisibleOnPage: false,
         selectedKeg: null,
         editing: false
       });
@@ -58,9 +56,6 @@ class KegControl extends React.Component {
       const { dispatch } = this.props;
       const action = a.toggleForm();
       dispatch(action);
-      // this.setState(prevState => ({
-      //   formVisibleOnPage: !prevState.formVisibleOnPage,
-      // }));
     }
   }
       
@@ -71,7 +66,6 @@ class KegControl extends React.Component {
     dispatch(action);
     const action2 = a.toggleForm()
     dispatch(action2);
-    // this.setState({formVisibleOnPage: false});
   }
   // handleBuyingKeg = () => { //newKeg adds newKeg as argument
   //   // const { dispatch } = this.props;
