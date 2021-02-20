@@ -14,8 +14,8 @@ class KegControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKeg: null,
-      editing: false
+      // selectedKeg: null, // comment out to allow us to retrive object without default value of null.
+      editing: false // comment this out when using redux
     };
   }
 
@@ -23,6 +23,11 @@ class KegControl extends React.Component {
   handleChangingSelectedKeg = (id) => {
     const selectedKeg = this.props.masterKegList[id];
     this.setState({selectedKeg: selectedKeg});
+    // const { dispatch } = this.props;
+    // const selectedKeg = this.props.masterKegList[id];
+    // const action = a.selectKeg(selectedKeg)
+    // dispatch(action);
+    // Code above successfully grabs the specific keg in console but it does not switch to specified details. ?
   }
   
   handleDeletingKeg = (id) => {
@@ -34,12 +39,20 @@ class KegControl extends React.Component {
     
   handleEditClick = () => {
     this.setState({editing: true});
+    // const {dispatch} = this.props;
+    // const action = a.editing();
+    // dispatch(action);
+    // Code above worked with changing edit boolean to true instead of false, but didnt redirect to form.
   }
 
   handleEditingKegInList = (kegToEdit) => {
     const { dispatch } = this.props;
     const action = a.addKeg(kegToEdit);
     dispatch(action);
+    // const action2 = a.editing();
+    // dispatch(action2); // This code assised line 45
+    // const action3= a.toggleForm() // Thought this may redirect to form.
+    // dispatch(action3);
     this.setState({
       editing: false,
       selectedKeg: null
@@ -139,13 +152,17 @@ class KegControl extends React.Component {
 
 KegControl.propTypes = {
   masterKegList: PropTypes.object,
-  formVisibleOnPage: PropTypes.bool
+  formVisibleOnPage: PropTypes.bool,
+  editing:PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
     masterKegList: state.masterKegList,
     formVisibleOnPage: state.formVisibleOnPage,
+    selectedKeg: state.selectedKeg,
+    editing: state.editing
+
   }
 }
 KegControl = connect(mapStateToProps)(KegControl);

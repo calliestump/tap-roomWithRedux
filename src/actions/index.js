@@ -39,3 +39,7 @@ export const selectKeg = (keg) => ({
   type: c.SELECT_KEG,
   keg
 });
+
+export const editing = ()=>({
+  type: c.EDIT_KEG
+});
