@@ -23,6 +23,9 @@ class KegControl extends React.Component {
   handleChangingSelectedKeg = (id) => {
     const selectedKeg = this.props.masterKegList[id];
     this.setState({selectedKeg: selectedKeg});
+    // const { dispatch } = this.props;
+    // const action = a.selectedKeg[id];
+    // dispatch(action);
   }
   
   handleDeletingKeg = (id) => {
@@ -52,9 +55,9 @@ class KegControl extends React.Component {
         selectedKeg: null,
         editing: false
       });
-    } else {
+      } else {
       const { dispatch } = this.props;
-      const action = a.toggleForm();
+      const action= a.toggleForm()
       dispatch(action);
     }
   }
@@ -146,7 +149,7 @@ const mapStateToProps = state => {
   return {
     masterKegList: state.masterKegList,
     formVisibleOnPage: state.formVisibleOnPage,
-    selectedKeg: state.selectKeg
+    selectedKeg: state.selectedKeg
   }
 }
 KegControl = connect(mapStateToProps)(KegControl);

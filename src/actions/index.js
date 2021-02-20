@@ -1,3 +1,5 @@
+import * as c from './ActionTypes';
+ 
 export const deleteKeg = id => ({
   type: 'DELETE_KEG',
   id
@@ -32,4 +34,3 @@ export const buyPint = (keg) => {
     id
   }
 }
-
