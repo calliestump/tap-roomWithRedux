@@ -192,7 +192,9 @@ git remote add origin [repo. link]
 |--------|:-----:|
 | [Callie Stump](https://www.linkedin.com/in/callie-stump/) | [callie@stu.mp](mailto:callie@stu.mp) |
 ------------------------------
-<!-- ## **Bugs Found** -->
+## **Bugs **
+* Restock button breaks application due to lack of redux.
+* edit and selectedKeg actions are currently commented out because they don't return correct views - but they return correct values.
  
 ## Legal
 ```
