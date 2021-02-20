@@ -34,3 +34,8 @@ export const buyPint = (keg) => {
     id
   }
 }
+
+export const selectKeg = (keg) => ({
+  type: c.SELECT_KEG,
+  keg
+});
