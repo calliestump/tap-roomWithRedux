@@ -75,7 +75,114 @@ git remote add origin [repo. link]
 * GitHub
 * .JSON
 
-
+## **Specs**
+<details>
+<summary>Expand Specs</summary>
+<table>
+  <tr>
+    <th>Test</th>
+    <th>Input</th>
+    <th>Output</th>
+    <th>Completed</th>
+  </tr>
+  <tr>
+    <td>Should return default state if no action type is recongized.</td>
+    <td>formVisibleReducer(false, { type: null }))</td>
+    <td>false</td>
+    <td>✓</td>
+  </tr>    
+  <tr>
+    <td>Should toggle form visibility state to true</td>
+    <td>formVisibleReducer(false, { type: 'TOGGLE_FORM' }))</td>
+    <td>true</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td>Should return default state if no action type is recongized</td>
+    <td>rootReducer({}, { type: null }))</td>
+    <td>masterKegList: {}, formVisibleOnPage: false</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td>Check that initial state of kegListReducer matches root reducer.</td>
+    <td>store.getState().masterKegList)</td>
+    <td>kegListReducer(undefined, { type: null }</td>
+    <td>✓</td>
+  </tr> 
+  <tr>
+    <td>Check that TOGGLE_FORM  action works for formVisibleReducer and root reducer.</td>
+    <td>store.getState().formVisibleOnPage</td>
+    <td>formVisibleReducer(undefined, action)</td>
+    <td>✓</td>
+  </tr> 
+  <tr>
+    <td>Should return the default state if it doesnt regonize any action types passed into the reducer.</td>
+    <td>kegListReducer({}, { type: null }))</td>
+    <td>({})</td>
+    <td>✓</td>
+  </tr>    
+  <tr>
+    <td>Should successfully add a new keg data to masterKegList.</td>
+    <td>kegListReducer({}, action))</td>
+    <td>({})</td>
+    <td>✓</td>
+  </tr> 
+  <tr>
+    <td>Should return the default state if it doesnt regonize any action types passed into the reducer.</td>
+    <td>kegListReducer({}, { type: null }))</td>
+    <td>[id] : {
+        kegName,
+        kegBrand,
+        kegPintQuantity,
+        kegAlcoholContent,
+        kegPrice,
+        id
+      }</td>
+    <td>✓</td>
+  </tr> 
+  <tr>
+    <td>Should successfully delete a keg</td>
+    <td>kegListReducer(currentState, action)</td>
+    <td>2:
+      {
+        kegName: 'Half-Barrel',
+        kegBrand: 'Bud Light',
+        kegPintQuantity: 124,
+        kegAlcoholContent: "28.5%",
+        kegPrice: "13.99",
+        id: 2
+      }</td>
+    <td>✓</td>
+  </tr> 
+  <tr>
+    <td>Should successfully buy a pint.</td>
+    <td>kegListReducer(kegData, action)</td>
+    <td>1: 
+      {
+        kegName: 'Quarter-Barrel',
+        kegBrand: 'Miller Lite',
+        kegPintQuantity: 123,
+        kegAlcoholContent: "25.6%",
+        kegPrice: "12.99",
+        id: 1
+      }</td>
+    <td>✓</td>
+  </tr> 
+  <tr>
+    <td>Should restock a keg.</td>
+    <td>kegData, action</td>
+    <td>1: 
+      {
+        kegName: 'Quarter-Barrel',
+        kegBrand: 'Miller Lite',
+        kegPintQuantity: 124,
+        kegAlcoholContent: "25.6%",
+        kegPrice: "12.99",
+        id: 1
+      }</td>
+    <td>✓</td>
+  </tr>     
+</table>  
 ------------------------------
 ## 👥 Contributor
 
