@@ -69,35 +69,13 @@ class KegControl extends React.Component {
 
   handleBuyingKeg = (keg) => { //keg adds newKeg as argument
     const { dispatch } = this.props;
-    const action = a.buyKeg(keg);
+    // const selectedKeg = this.state.selectedKeg; // allows the page to stay on the details but it doesnt update the value.
+    const action = a.buyPint(keg);
     dispatch(action);
     this.setState({
-      selectedKeg: null,
+      selectedKeg: null, // selectedKeg - this would assist with line 72
       editing: false
-    })
-    // const { dispatch } = this.props;
-    // const { id, kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice } = newKeg
-    // const action = { 
-    //   type: 'BUY_PINT',
-    //   id,
-    //   kegName,
-    //   kegBrand,
-    //   kegPintQuantity,
-    //   kegAlcoholContent,
-    //   kegPrice
-    // }
-    // dispatch(action);
-    // this.setState({formVisibleOnPage: false});
-
-    // const selectedKeg = this.state.selectedKeg; //selects keg that is currently selected and viewed in details page
-    // const newKegPintQuantity = Object.assign({}, selectedKeg, {kegPintQuantity: selectedKeg.kegPintQuantity - 1}); //this targets the selectedKeg and it's kegPintQuantity, and assigns it the new kegPintQuantity
-    // const newKegList = this.state.masterKegList
-    // .filter(keg => keg.id !== this.state.selectedKeg.id)
-    // .concat(newKegPintQuantity); //updates the keg list
-    // this.setState({
-    //   masterKegList: newKegList,
-    //   selectedKeg: newKegPintQuantity
-    // });
+    });
   } 
 
   // handleRestock = () => {

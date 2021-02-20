@@ -20,7 +20,7 @@ export const addKeg = (keg) => {
   }
 }
 
-export const buyKeg = (keg) => {
+export const buyPint = (keg) => {
   const {kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice, id} = keg;
   return {
     type: 'BUY_PINT',

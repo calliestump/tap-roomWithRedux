@@ -1,3 +1,5 @@
+import * as c from './../actions/ActionTypes';
+
 export default (state = {}, action) => {
   const { kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice, id } = action;
   switch (action.type) {
@@ -23,17 +25,17 @@ export default (state = {}, action) => {
         id
       }
     });
-  case c.RESTOCK_KEG:
-    return Object.assign({}, state, {
-      [id]: {
-        kegName,
-        kegBrand,
-        kegPintQuantity: kegPintQuantity + 124,
-        kegAlcoholContent,
-        kegPrice,
-        id
-      }
-    });
+  // case c.RESTOCK_KEG:
+  //   return Object.assign({}, state, {
+  //     [id]: {
+  //       kegName,
+  //       kegBrand,
+  //       kegPintQuantity: kegPintQuantity + 124,
+  //       kegAlcoholContent,
+  //       kegPrice,
+  //       id
+  //     }
+  //   });
   case c.DELETE_KEG:
     const newState = { ...state };
     delete newState[id];
