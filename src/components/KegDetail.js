@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function KegDetail(props){
-  const { keg, onClickingDelete, onClickingBuy} = props;  // onPintRestock,
+  const { keg, onClickingDelete, onClickingBuy, onPintRestock} = props;  // onPintRestock,
   let {alert} = props;
   if (keg.kegPintQuantity === 10) {
    alert = <span className="almostOut">We're at {keg.kegPintQuantity} pints - Better grab a drink!</span>
@@ -27,8 +27,8 @@ function KegDetail(props){
     return (
       <React.Fragment>
         <h1>Oh no! <span className="outOfPints">{keg.kegName} - {keg.kegBrand}</span> is out of pints.</h1><br/>
-        {/* <input type="number" placeholder="Pints to restock" className="pintRestockNum" id= "pintRestockNum" />
-        <button className="pintRestockBtn" onClick ={() => onPintRestock() }>Restock</button><br/><br/><br/> */}
+        <input type="number" placeholder="Pints to restock" className="pintRestockNum" id= "pintRestockNum" />
+        <button className="pintRestockBtn" onClick ={() => onPintRestock() }>Restock</button><br/><br/><br/>
         <button className="delete" onClick ={() => onClickingDelete(keg.id)}>Delete Keg</button><br/>
       </React.Fragment>
     )

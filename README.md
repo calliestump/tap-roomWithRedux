@@ -87,19 +87,19 @@ git remote add origin [repo. link]
   </tr>
   <tr>
     <td>Should return default state if no action type is recongized.</td>
-    <td>formVisibleReducer(false, { type: null }))</td>
+    <td>formVisibleReducer(false, { type: null })</td>
     <td>false</td>
     <td>✓</td>
   </tr>    
   <tr>
     <td>Should toggle form visibility state to true</td>
-    <td>formVisibleReducer(false, { type: 'TOGGLE_FORM' }))</td>
+    <td>formVisibleReducer(false, { type: 'TOGGLE_FORM' })</td>
     <td>true</td>
     <td>✓</td>
   </tr>
   <tr>
     <td>Should return default state if no action type is recongized</td>
-    <td>rootReducer({}, { type: null }))</td>
+    <td>rootReducer({}, { type: null })</td>
     <td>masterKegList: {}, formVisibleOnPage: false</td>
     <td>✓</td>
   </tr>
@@ -117,19 +117,19 @@ git remote add origin [repo. link]
   </tr> 
   <tr>
     <td>Should return the default state if it doesnt regonize any action types passed into the reducer.</td>
-    <td>kegListReducer({}, { type: null }))</td>
+    <td>kegListReducer({}, { type: null })</td>
     <td>({})</td>
     <td>✓</td>
   </tr>    
   <tr>
     <td>Should successfully add a new keg data to masterKegList.</td>
-    <td>kegListReducer({}, action))</td>
+    <td>kegListReducer({}, action)</td>
     <td>({})</td>
     <td>✓</td>
   </tr> 
   <tr>
     <td>Should return the default state if it doesnt regonize any action types passed into the reducer.</td>
-    <td>kegListReducer({}, { type: null }))</td>
+    <td>kegListReducer({}, { type: null })</td>
     <td>[id] : {
         kegName,
         kegBrand,
@@ -182,7 +182,9 @@ git remote add origin [repo. link]
       }</td>
     <td>✓</td>
   </tr>     
-</table>  
+</table> 
+</details> 
+
 ------------------------------
 ## 👥 Contributor
 
