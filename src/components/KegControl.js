@@ -46,14 +46,13 @@ class KegControl extends React.Component {
   handleClick = () => {
     const { dispatch } = this.props;
     if (this.props.selectedKeg != null) {
-      this.setState({
-        editing: false
-      });
-      const action = a.selectKeg(null); // allows our handleClick to regonize if selectedKeg has a value. If not, redirect to kegList
-      dispatch(action); 
+      dispatch(action);
+      const action = a.editing();
+      const action2 = a.selectKeg(null); // allows our handleClick to regonize if selectedKeg has a value. If not, redirect to kegList
+      dispatch(action2); 
       } else {
-      const action2= a.toggleForm()
-      dispatch(action2);
+      const action3= a.toggleForm()
+      dispatch(action3);
     }
   }
       
@@ -65,7 +64,7 @@ class KegControl extends React.Component {
     dispatch(action2);
   }
 
-  handleBuyingKeg = () => { //keg adds newKeg as argument
+  handleBuyingKeg = () => { 
     const { dispatch } = this.props;
     const currentKeg = this.props.selectedKeg; 
     const updatedKeg = { ...currentKeg, kegPintQuantity: currentKeg.kegPintQuantity - 1} // clones the currentObject and subtracts one from the kegPintQuantity saving the new values in a new const.
