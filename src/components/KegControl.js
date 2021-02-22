@@ -21,12 +21,12 @@ class KegControl extends React.Component {
 
   
   handleChangingSelectedKeg = (id) => {
-    const selectedKeg = this.props.masterKegList[id];
-    this.setState({selectedKeg: selectedKeg});
-    // const { dispatch } = this.props;
     // const selectedKeg = this.props.masterKegList[id];
-    // const action = a.selectKeg(selectedKeg)
-    // dispatch(action);
+    // this.setState({selectedKeg: selectedKeg});
+    const { dispatch } = this.props;
+    const currentKeg = Object.values(this.props.masterKegList).filter(keg => keg.id ===id)[0];
+    const action = a.selectKeg(currentKeg)
+    dispatch(action);
     // Code above successfully grabs the specific keg in console but it does not switch to specified details. ?
   }
   
@@ -108,17 +108,17 @@ class KegControl extends React.Component {
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.editing ) {
+    if (this.props.editing ) {
       currentlyVisibleState = 
       <EditKegForm 
-      keg = {this.state.selectedKeg}
+      keg = {this.props.selectedKeg}
       onEditKeg = {this.handleEditingKegInList}
       />
       buttonText = "Return to Keg List"
-    } else if (this.state.selectedKeg != null) {
+    } else if (this.props.selectedKeg != null) {
       currentlyVisibleState = 
       <KegDetail 
-      keg = {this.state.selectedKeg} 
+      keg = {this.props.selectedKeg} 
       onClickingBuy = {this.handleBuyingKeg}
       onClickingDelete = {this.handleDeletingKeg}
       onClickingEdit = {this.handleEditClick}
@@ -153,7 +153,8 @@ class KegControl extends React.Component {
 KegControl.propTypes = {
   masterKegList: PropTypes.object,
   formVisibleOnPage: PropTypes.bool,
-  editing:PropTypes.bool
+  editing:PropTypes.bool,
+  selectKeg: PropTypes.object
 };
 
 const mapStateToProps = state => {

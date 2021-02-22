@@ -37,7 +37,7 @@ export const buyPint = (keg) => {
 
 export const selectKeg = (keg) => ({
   type: c.SELECT_KEG,
-  keg
+  selectedKeg: keg
 });
 
 export const editing = ()=>({
