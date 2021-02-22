@@ -22,22 +22,9 @@ export const addKeg = (keg) => {
   }
 }
 
-export const buyPint = (keg) => {
-  const {kegName, kegBrand, kegPintQuantity, kegAlcoholContent, kegPrice, id} = keg;
-  return {
-    type: 'BUY_PINT',
-    kegName,
-    kegBrand,
-    kegPintQuantity,
-    kegAlcoholContent,
-    kegPrice,
-    id
-  }
-}
-
 export const selectKeg = (keg) => ({
   type: c.SELECT_KEG,
-  selectedKeg: keg
+  selectedKeg: keg // takes keg in as argument so it can deploy.
 });
 
 export const editing = ()=>({

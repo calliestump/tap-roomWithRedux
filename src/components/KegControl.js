@@ -11,64 +11,49 @@ import * as a from './../actions';
 
 class KegControl extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      // selectedKeg: null, // comment out to allow us to retrive object without default value of null.
-      editing: false // comment this out when using redux
-    };
-  }
 
-  
   handleChangingSelectedKeg = (id) => {
-    // const selectedKeg = this.props.masterKegList[id];
-    // this.setState({selectedKeg: selectedKeg});
     const { dispatch } = this.props;
     const currentKeg = Object.values(this.props.masterKegList).filter(keg => keg.id ===id)[0];
     const action = a.selectKeg(currentKeg)
     dispatch(action);
-    // Code above successfully grabs the specific keg in console but it does not switch to specified details. ?
   }
   
   handleDeletingKeg = (id) => {
     const { dispatch } = this.props;
     const action = a.deleteKeg(id)
     dispatch(action);
-    this.setState({selectedKeg: null});
+    const action2 = a.selectKeg(null); // takes us back to keg list showing the new updated list of kegs.
+    dispatch(action2);
     }
     
   handleEditClick = () => {
-    this.setState({editing: true});
-    // const {dispatch} = this.props;
-    // const action = a.editing();
-    // dispatch(action);
-    // Code above worked with changing edit boolean to true instead of false, but didnt redirect to form.
+    const {dispatch} = this.props;
+    const action = a.editing();
+    dispatch(action);
   }
 
   handleEditingKegInList = (kegToEdit) => {
     const { dispatch } = this.props;
     const action = a.addKeg(kegToEdit);
     dispatch(action);
-    // const action2 = a.editing();
-    // dispatch(action2); // This code assised line 45
-    // const action3= a.toggleForm() // Thought this may redirect to form.
-    // dispatch(action3);
-    this.setState({
-      editing: false,
-      selectedKeg: null
-    });
+    const action2 = a.editing();
+    dispatch(action2); 
+    const action3= a.selectKeg(kegToEdit) // takes our current object in for updating.
+    dispatch(action3);
   }
       
   handleClick = () => {
-    if (this.state.selectedKeg != null) {
+    const { dispatch } = this.props;
+    if (this.props.selectedKeg != null) {
       this.setState({
-        selectedKeg: null,
         editing: false
       });
+      const action = a.selectKeg(null); // allows our handleClick to regonize if selectedKeg has a value. If not, redirect to kegList
+      dispatch(action); 
       } else {
-      const { dispatch } = this.props;
-      const action= a.toggleForm()
-      dispatch(action);
+      const action2= a.toggleForm()
+      dispatch(action2);
     }
   }
       
@@ -80,29 +65,25 @@ class KegControl extends React.Component {
     dispatch(action2);
   }
 
-  handleBuyingKeg = (keg) => { //keg adds newKeg as argument
+  handleBuyingKeg = () => { //keg adds newKeg as argument
     const { dispatch } = this.props;
-    // const selectedKeg = this.state.selectedKeg; // allows the page to stay on the details but it doesnt update the value.
-    const action = a.buyPint(keg);
+    const currentKeg = this.props.selectedKeg; 
+    const updatedKeg = { ...currentKeg, kegPintQuantity: currentKeg.kegPintQuantity - 1} // clones the currentObject and subtracts one from the kegPintQuantity saving the new values in a new const.
+    const action = a.addKeg(updatedKeg); // calls that object into the addKeg reducer to make a new object and update it to details.
     dispatch(action);
-    this.setState({
-      selectedKeg: null, // selectedKeg - this would assist with line 72
-      editing: false
-    });
+    const action2 = a.selectKeg(updatedKeg);
+    dispatch(action2);
   } 
 
   handleRestock = () => {
+    const { dispatch } = this.props;
     const amountToRestock = parseInt($(".pintRestockNum").val());
-    const selectedKeg = this.state.selectedKeg; //selects keg that is currently selected and viewed in details page
-    const newKegPintQuantity = Object.assign({}, selectedKeg, {kegPintQuantity: selectedKeg.kegPintQuantity += amountToRestock}); //this targets the selectedKeg and it's kegPintQuantity, and assigns it the new kegPintQuantity. 
-    // Ex.) If pints equals 0 and I want to restock 20, the new ouput is "020"
-    const newKegList = this.state.masterKegList
-    .filter(keg => keg.id !== this.state.selectedKeg.id)
-    .concat(newKegPintQuantity); //updates the keg list
-    this.setState({
-      masterKegList: newKegList,
-      selectedKeg: newKegPintQuantity
-    });
+    const currentKeg = this.props.selectedKeg; //selects keg that is currently selected and viewed in details page
+    const updatedKeg = { ...currentKeg, kegPintQuantity: currentKeg.kegPintQuantity += amountToRestock}
+    const action = a.addKeg(updatedKeg);
+    dispatch(action);
+    const action2 = a.selectKeg(updatedKeg);
+    dispatch(action2);
   } 
 
   render(){

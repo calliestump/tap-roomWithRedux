@@ -14,28 +14,6 @@ export default (state = {}, action) => {
         id
       }
     });
-  case c.BUY_PINT:
-    return Object.assign({}, state, {
-      [id]: {
-        kegName,
-        kegBrand,
-        kegPintQuantity: kegPintQuantity - 1,
-        kegAlcoholContent,
-        kegPrice,
-        id
-      }
-    });
-  // case c.RESTOCK_KEG:
-  //   return Object.assign({}, state, {
-  //     [id]: {
-  //       kegName,
-  //       kegBrand,
-  //       kegPintQuantity: kegPintQuantity + 124,
-  //       kegAlcoholContent,
-  //       kegPrice,
-  //       id
-  //     }
-  //   });
   case c.DELETE_KEG:
     const newState = { ...state };
     delete newState[id];
