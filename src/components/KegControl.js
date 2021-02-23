@@ -2,9 +2,7 @@ import React from 'react';
 import KegList from './KegList';
 import NewKegForm from './NewKegForm';
 import KegDetail from './KegDetail';
-// import amountToRestock from './KegDetail';
 import EditKegForm from './EditKegForm';
-import $ from 'jquery';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import * as a from './../actions';
@@ -74,14 +72,22 @@ class KegControl extends React.Component {
     dispatch(action2);
   } 
 
-  handleRestock = () => {
+  handleRestock = (id, restockAmount) => {
+    // const { dispatch } = this.props;
+    // const amountToRestock = parseInt($(".pintRestockNum").val());
+    // const currentKeg = this.props.selectedKeg; //selects keg that is currently selected and viewed in details page
+    // const updatedKeg = { ...currentKeg, kegPintQuantity: currentKeg.kegPintQuantity += amountToRestock}
+    // const action = a.addKeg(updatedKeg);
+    // dispatch(action);
+    // const action2 = a.selectKeg(updatedKeg);
+    // dispatch(action2);
     const { dispatch } = this.props;
-    const amountToRestock = parseInt($(".pintRestockNum").val());
-    const currentKeg = this.props.selectedKeg; //selects keg that is currently selected and viewed in details page
-    const updatedKeg = { ...currentKeg, kegPintQuantity: currentKeg.kegPintQuantity += amountToRestock}
-    const action = a.addKeg(updatedKeg);
+    const currentKeg = this.props.masterKegList[id];
+    currentKeg.kegPintQuantity = currentKeg.kegPintQuantity + restockAmount;
+    const action = a.addKeg(currentKeg);
     dispatch(action);
-    const action2 = a.selectKeg(updatedKeg);
+    const selectedKeg = this.props.masterKegList[id];
+    const action2 = a.selectKeg(selectedKeg);
     dispatch(action2);
   } 
 

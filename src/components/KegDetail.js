@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 function KegDetail(props){
   const { keg, onClickingDelete, onClickingBuy, onPintRestock, onClickingEdit} = props;  // onPintRestock,
   let {alert} = props;
+  let amountToRestock = React.createRef(); // allows DOM access from components.
   if (keg.kegPintQuantity === 10) {
    alert = <span className="almostOut">We're at {keg.kegPintQuantity} pints - Better grab a drink!</span>
   } else {
@@ -27,8 +28,8 @@ function KegDetail(props){
     return (
       <React.Fragment>
         <h1>Oh no! <span className="outOfPints">{keg.kegName} - {keg.kegBrand}</span> is out of pints.</h1><br/>
-        <input type="number" placeholder="Pints to restock" className="pintRestockNum" id= "pintRestockNum" />
-        <button className="pintRestockBtn" onClick ={() => onPintRestock() }>Restock</button><br/><br/><br/>
+        <input ref={amountToRestock} type="number" placeholder="Pints to restock" className="pintRestockNum" id= "pintRestockNum" />
+        <button className="pintRestockBtn" onClick ={() => onPintRestock(keg.id, parseInt(amountToRestock.current.value)) }>Restock</button><br/><br/><br/>
         <button className="delete" onClick ={() => onClickingDelete(keg.id)}>Delete Keg</button><br/>
       </React.Fragment>
     )
