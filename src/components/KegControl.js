@@ -73,14 +73,6 @@ class KegControl extends React.Component {
   } 
 
   handleRestock = (id, restockAmount) => {
-    // const { dispatch } = this.props;
-    // const amountToRestock = parseInt($(".pintRestockNum").val());
-    // const currentKeg = this.props.selectedKeg; //selects keg that is currently selected and viewed in details page
-    // const updatedKeg = { ...currentKeg, kegPintQuantity: currentKeg.kegPintQuantity += amountToRestock}
-    // const action = a.addKeg(updatedKeg);
-    // dispatch(action);
-    // const action2 = a.selectKeg(updatedKeg);
-    // dispatch(action2);
     const { dispatch } = this.props;
     const currentKeg = this.props.masterKegList[id];
     currentKeg.kegPintQuantity = currentKeg.kegPintQuantity + restockAmount;
